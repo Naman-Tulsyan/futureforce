@@ -33,11 +33,11 @@ export default {
 
   // The five demo prompts (Phases 2-5 of the script), run in order.
   prompts: [
-    "Pull a health snapshot on SiliconEdge Corp. Please include their new Total Score and their registered contact email.",
+    "Pull a health snapshot on SiliconEdge Corp, Please include their new Total Score and their registered contact email.",
     "Are there any monopoly risks tied to SiliconEdge Corp for our semiconductor supply?",
     "Take this customs hold into account and run a simulation. If SiliconEdge Corp faces a full 4-week delay, what is the projected production drop and revenue impact for this quarter?",
     "That revenue impact is too high. Find alternative semiconductor suppliers who do not route through India. Rank them by their Quality Score and Total Score.",
-    "Let's pivot to NanoChip Semiconductors. Draft an urgent email to our internal procurement team summarizing the Mumbai port strike, the simulated revenue loss, and our recommendation to initiate onboarding with NanoChip immediately.",
+    "Let's pivot to NanoChip Semiconductors. Draft an email to our internal procurement team summarizing the Mumbai port delay, the simulated production impact, and our recommendation to initiate onboarding immediately.",
   ],
 
   // Auto-pacing delays (ms). Ignored when MANUAL=1. Tune to your narration.
