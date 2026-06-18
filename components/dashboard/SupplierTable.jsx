@@ -44,12 +44,12 @@ export function SupplierTable({ suppliers, silentNames = [], onAsk }) {
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap items-center gap-2">
+      <div className="mb-4 flex flex-wrap items-center gap-2">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search supplier or region…"
-          className="w-48 rounded-md border border-slate-700 bg-slate-800/60 px-3 py-1.5 text-xs text-slate-200 placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none"
+          className="w-52 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2 text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:border-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#1E293B]/5 transition-all"
         />
         <div className="flex flex-wrap gap-1.5">
           {materials.map((m) => (
@@ -58,58 +58,58 @@ export function SupplierTable({ suppliers, silentNames = [], onAsk }) {
         </div>
       </div>
 
-      <div className="max-h-[360px] overflow-auto rounded-lg border border-slate-800">
-        <table className="w-full text-left text-xs">
-          <thead className="sticky top-0 z-10 bg-slate-900">
-            <tr className="text-slate-400">
+      <div className="max-h-[360px] overflow-auto rounded-xl border border-[#E2E8F0]">
+        <table className="premium-table w-full text-left text-xs">
+          <thead className="sticky top-0 z-10">
+            <tr>
               {COLUMNS.map((c) => (
                 <th
                   key={c.key}
                   onClick={() => setSort(c.key)}
-                  className={`cursor-pointer select-none whitespace-nowrap px-3 py-2 font-medium hover:text-slate-200 ${
+                  className={`cursor-pointer select-none whitespace-nowrap px-4 py-3 transition-colors hover:text-[#334155] ${
                     c.align === "right" ? "text-right" : "text-left"
                   }`}
                 >
                   {c.label}
-                  {sortKey === c.key && <span className="ml-1 text-cyan-400">{asc ? "▲" : "▼"}</span>}
+                  {sortKey === c.key && <span className="ml-1 text-[#0F172A] font-bold">{asc ? "▲" : "▼"}</span>}
                 </th>
               ))}
-              <th className="px-3 py-2" />
+              <th className="px-4 py-3" />
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800">
+          <tbody>
             {rows.map((s) => {
               const band = scoreBand(s.overall);
               const silent = silentNames.includes(s.name);
               return (
-                <tr key={s.name} className="group hover:bg-slate-800/40">
-                  <td className="px-3 py-2">
+                <tr key={s.name} className="group">
+                  <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-slate-100">{s.name}</span>
-                      {!s.active && <Badge color="#94a3b8">Inactive</Badge>}
-                      {silent && <Badge color="#fb923c" dot>Silent</Badge>}
+                      <span className="font-semibold text-[#0F172A]">{s.name}</span>
+                      {!s.active && <Badge color="#94A3B8">Inactive</Badge>}
+                      {silent && <Badge color="#B45309" dot>Silent</Badge>}
                     </div>
-                    <div className="text-[10px] text-slate-500">{s.location}</div>
+                    <div className="text-[10px] text-[#94A3B8] mt-0.5">{s.location}</div>
                   </td>
-                  <td className="px-3 py-2 text-slate-300">{s.material}</td>
-                  <td className="px-3 py-2 text-slate-300">{s.region}</td>
-                  <td className="px-3 py-2 text-right">
-                    <span className="rounded px-1.5 py-0.5 font-semibold tabular-nums"
+                  <td className="px-4 py-3 text-[#475569]">{s.material}</td>
+                  <td className="px-4 py-3 text-[#475569]">{s.region}</td>
+                  <td className="px-4 py-3 text-right">
+                    <span className="rounded-md px-2 py-0.5 font-bold tabular-nums text-sm"
                       style={{ color: band.color, background: band.bg }}>
                       {s.overall.toFixed(1)}
                     </span>
                   </td>
-                  <td className="px-3 py-2 text-right tabular-nums text-slate-300">{s.financialHealth.toFixed(1)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">
-                    <span style={{ color: s.onTimeRate >= 90 ? "#34d399" : s.onTimeRate >= 80 ? "#fbbf24" : "#f87171" }}>
+                  <td className="px-4 py-3 text-right tabular-nums text-[#475569]">{s.financialHealth.toFixed(1)}</td>
+                  <td className="px-4 py-3 text-right tabular-nums">
+                    <span style={{ color: s.onTimeRate >= 90 ? "#047857" : s.onTimeRate >= 80 ? "#B45309" : "#B91C1C" }}>
                       {s.onTimeRate.toFixed(0)}%
                     </span>
                   </td>
-                  <td className="px-3 py-2 text-right tabular-nums text-slate-400">₹{s.costPerUnit.toLocaleString("en-IN")}</td>
-                  <td className="px-3 py-2 text-right">
+                  <td className="px-4 py-3 text-right tabular-nums text-[#64748B]">₹{s.costPerUnit.toLocaleString("en-IN")}</td>
+                  <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => onAsk?.(`Give me a full health check on ${s.name}`)}
-                      className="rounded border border-slate-700 px-2 py-0.5 text-[10px] text-slate-400 opacity-0 transition-opacity hover:border-cyan-500 hover:text-cyan-300 group-hover:opacity-100"
+                      className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1 text-[10px] font-semibold text-[#64748B] opacity-0 transition-all duration-150 hover:border-[#CBD5E1] hover:text-[#0F172A] hover:bg-[#F1F5F9] group-hover:opacity-100"
                     >
                       Ask agent
                     </button>
@@ -120,7 +120,7 @@ export function SupplierTable({ suppliers, silentNames = [], onAsk }) {
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[11px] text-slate-500">{rows.length} of {suppliers.length} suppliers</p>
+      <p className="mt-3 text-[11px] font-medium text-[#94A3B8]">{rows.length} of {suppliers.length} suppliers</p>
     </div>
   );
 }

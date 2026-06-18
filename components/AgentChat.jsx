@@ -41,7 +41,7 @@ const AgentChat = forwardRef(function AgentChat({ open, onClose }, ref) {
   const send = async (text) => {
     const msg = (text ?? input).trim();
     if (!msg || loading) return;
-    if (!sessionId) { pendingRef.current = msg; return; } // queue until session ready
+    if (!sessionId) { pendingRef.current = msg; return; }
     setInput("");
     setMessages((p) => [...p, { role: "user", text: msg }]);
     setLoading(true);
@@ -76,42 +76,45 @@ const AgentChat = forwardRef(function AgentChat({ open, onClose }, ref) {
 
   return (
     <>
-      {open && <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden" onClick={onClose} />}
+      {open && <div className="fixed inset-0 z-40 bg-black/15 backdrop-blur-sm md:hidden" onClick={onClose} />}
       <aside
-        className={`fixed right-0 top-0 z-50 flex h-full w-full flex-col border-l border-slate-800 bg-slate-950 shadow-2xl transition-transform duration-300 sm:w-[400px] ${
+        className={`fixed right-0 top-0 z-50 flex h-full w-full flex-col border-l border-[#E2E8F0] bg-white shadow-2xl shadow-black/8 transition-transform duration-300 sm:w-[440px] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <header className="flex items-center justify-between border-b border-slate-800 bg-gradient-to-r from-cyan-950/60 to-slate-900 px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-cyan-500/20 text-cyan-300">⚡</span>
+        <header className="flex items-center justify-between border-b border-[#E2E8F0] px-5 py-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#1E293B] text-sm text-white shadow-sm">⚡</span>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100">Agentforce Co-Pilot</h2>
-              <p className="flex items-center gap-1 text-[11px] text-slate-400">
-                <span className={`h-1.5 w-1.5 rounded-full ${sessionId ? "bg-emerald-400" : "bg-red-400"}`} />
+              <h2 className="text-[13px] font-bold text-[#0F172A]">Agentforce Co-Pilot</h2>
+              <p className="flex items-center gap-1.5 text-[11px] text-[#94A3B8]">
+                <span className={`h-1.5 w-1.5 rounded-full ${sessionId ? "bg-[#047857]" : "bg-[#B91C1C]"}`} />
                 {sessionId ? "Connected" : "Connecting…"}
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="rounded-md p-1.5 text-slate-400 hover:bg-slate-800 hover:text-slate-200">✕</button>
+          <button onClick={onClose} className="rounded-lg p-2 text-[#94A3B8] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors">✕</button>
         </header>
 
-        {error && <div className="bg-red-950/60 px-4 py-2 text-[11px] text-red-300">{error}</div>}
+        {error && <div className="border-b border-[#FECACA] bg-[#FEF2F2] px-5 py-2.5 text-[11px] font-medium text-[#B91C1C]">{error}</div>}
 
-        <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4">
+        <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto p-5">
           {messages.length === 0 && !loading && (
-            <div className="mt-6 text-center">
-              <p className="text-sm text-slate-400">Ask your Supply Chain Intelligence Officer anything.</p>
-              <p className="mt-1 text-[11px] text-slate-600">e.g. “Draft an email to the tyre supplier requesting a status update.”</p>
+            <div className="mt-8 text-center">
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#F1F5F9]">
+                <span className="text-xl">💬</span>
+              </div>
+              <p className="text-sm font-medium text-[#475569]">Ask your Supply Chain Intelligence Officer anything.</p>
+              <p className="mt-1 text-[11px] text-[#94A3B8]">e.g. "Draft an email to the tyre supplier requesting a status update."</p>
             </div>
           )}
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-[13px] leading-relaxed ${
+                className={`max-w-[85%] whitespace-pre-wrap px-4 py-3 text-[13px] leading-relaxed ${
                   m.role === "user"
-                    ? "rounded-br-sm bg-cyan-600 text-white"
-                    : "rounded-bl-sm border border-slate-800 bg-slate-900 text-slate-200"
+                    ? "rounded-2xl rounded-br-md bg-[#1E293B] text-white"
+                    : "rounded-2xl rounded-bl-md border border-[#E2E8F0] bg-[#F8FAFC] text-[#0F172A]"
                 }`}
               >
                 {m.text}
@@ -119,23 +122,23 @@ const AgentChat = forwardRef(function AgentChat({ open, onClose }, ref) {
             </div>
           ))}
           {loading && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-500">
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-cyan-400 [animation-delay:-0.3s]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-cyan-400 [animation-delay:-0.15s]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-cyan-400" />
-              <span className="ml-1">Agent is analyzing…</span>
+            <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#475569] [animation-delay:-0.3s]" />
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#475569] [animation-delay:-0.15s]" />
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#475569]" />
+              <span className="ml-1 font-medium">Agent is analyzing…</span>
             </div>
           )}
         </div>
 
-        <div className="border-t border-slate-800 p-3">
-          <div className="mb-2 flex flex-wrap gap-1.5">
+        <div className="border-t border-[#E2E8F0] p-4">
+          <div className="mb-3 flex flex-wrap gap-1.5">
             {QUICK_ACTIONS.map((a) => (
               <button
                 key={a.label}
                 onClick={() => send(a.prompt)}
                 disabled={loading}
-                className="rounded-full border border-slate-700 bg-slate-800/60 px-2.5 py-1 text-[11px] text-slate-300 transition-colors hover:border-cyan-500 hover:text-cyan-300 disabled:opacity-50"
+                className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1.5 text-[10px] font-semibold text-[#64748B] transition-all duration-150 hover:bg-[#F1F5F9] hover:text-[#1E293B] hover:border-[#CBD5E1] disabled:opacity-40"
               >
                 {a.label}
               </button>
@@ -148,12 +151,12 @@ const AgentChat = forwardRef(function AgentChat({ open, onClose }, ref) {
               onKeyDown={(e) => e.key === "Enter" && send()}
               placeholder={sessionId ? "Ask the agent…" : "Connecting…"}
               disabled={loading}
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-2.5 text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:border-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#1E293B]/5 transition-all"
             />
             <button
               onClick={() => send()}
               disabled={loading || !input.trim()}
-              className="rounded-lg bg-cyan-600 px-4 text-sm font-medium text-white transition-colors hover:bg-cyan-500 disabled:opacity-40"
+              className="rounded-lg bg-[#1E293B] px-5 text-sm font-semibold text-white transition-all duration-150 hover:bg-[#0F172A] disabled:opacity-30"
             >
               Send
             </button>

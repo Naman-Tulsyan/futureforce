@@ -1,8 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #e2e8f0;
+  /* ── Foundation ─────────────────────────────────────── */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --surface: #FFFFFF;
+  --surface-raised: #F8FAFC;
+  --surface-hover: #F1F5F9;
+
+  /* ── Borders ────────────────────────────────────────── */
+  --border: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  --border-hover: #CBD5E1;
+
+  /* ── Text ────────────────────────────────────────────── */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #94A3B8;
+
+  /* ── Primary (dark slate) ───────────────────────────── */
+  --primary: #1E293B;
+  --primary-hover: #0F172A;
+  --primary-light: #F1F5F9;
+
+  /* ── Semantic ───────────────────────────────────────── */
+  --success: #047857;
+  --success-light: #ECFDF5;
+  --success-border: #A7F3D0;
+  --warning: #B45309;
+  --warning-light: #FFFBEB;
+  --warning-border: #FDE68A;
+  --danger: #B91C1C;
+  --danger-light: #FEF2F2;
+  --danger-border: #FECACA;
+  --info: #0F766E;
+  --info-light: #F0FDFA;
+  --info-border: #99F6E4;
 }
 
 @theme inline {
@@ -13,36 +46,60 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "Inter", -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Slim dark scrollbars to match the command-center theme */
+/* ── Scrollbar ─────────────────────────────────────────── */
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 *::-webkit-scrollbar-track {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 3px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--border-hover);
 }
 
+/* ── Animations ────────────────────────────────────────── */
 @keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(248, 113, 113, 0);
-  }
-  50% {
-    box-shadow: 0 0 18px 0 rgba(248, 113, 113, 0.18);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.07); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ── Enterprise Table ──────────────────────────────────── */
+.premium-table thead th {
+  background: var(--surface-raised);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+.premium-table tbody tr {
+  transition: background 0.15s ease;
+}
+.premium-table tbody tr:hover {
+  background: var(--surface-raised);
+}
+.premium-table tbody td {
+  border-bottom: 1px solid var(--border-subtle);
 }
