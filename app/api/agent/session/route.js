@@ -7,7 +7,7 @@ export async function POST() {
     const agentId = process.env.SALESFORCE_AGENT_ID;
     const orgDomain = process.env.SALESFORCE_DOMAIN;
 
-    const url = `https://api.salesforce.com/einstein/ai-agent/v1/agents/${agentId}/sessions`;
+    const url = `https://api.test.salesforce.com/einstein/ai-agent/v1/agents/${agentId}/sessions`;
     console.log("[Session] POST", url);
 
     const res = await fetch(url, {

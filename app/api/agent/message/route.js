@@ -6,7 +6,7 @@ export async function POST(req) {
     const token = await getSalesforceToken();
 
     // ?sync=true = wait for full response (no streaming needed)
-    const url = `https://api.salesforce.com/einstein/ai-agent/v1/sessions/${sessionId}/messages?sync=true`;
+    const url = `https://api.test.salesforce.com/einstein/ai-agent/v1/sessions/${sessionId}/messages?sync=true`;
     console.log("[Message] POST", url);
 
     const res = await fetch(url, {
