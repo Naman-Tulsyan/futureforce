@@ -133,7 +133,7 @@ export default function Dashboard() {
               <button onClick={load} className="rounded-lg border border-slate-700 bg-slate-900/60 p-2 text-slate-400 hover:text-cyan-300" title="Refresh">
                 <span className={loading ? "inline-block animate-spin" : ""}>⟳</span>
               </button>
-              <button onClick={() => setChatOpen(true)} className="flex items-center gap-2 rounded-lg bg-cyan-600 px-3 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/20 hover:bg-cyan-500">
+              <button data-testid="open-chat" onClick={() => setChatOpen(true)} className="flex items-center gap-2 rounded-lg bg-cyan-600 px-3 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/20 hover:bg-cyan-500">
                 ⚡ Ask Agent
               </button>
             </div>

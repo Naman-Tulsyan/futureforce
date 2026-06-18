@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "demo": "node demo/run-demo.mjs",
+    "demo:reset": "curl -s -X POST http://localhost:3000/api/demo/reset"
   },
   "dependencies": {
     "next": "16.2.9",
@@ -18,6 +20,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "playwright": "^1.61.0",
     "tailwindcss": "^4"
   }
 }

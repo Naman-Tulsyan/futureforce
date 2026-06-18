@@ -1,0 +1,55 @@
+Finale Ideas
+🏆 Supply Chain Disruption Agent — Final Team Brief
+
+
+The Problem We're Solving
+
+A EV car manufacturing company loses millions every year to supply chain disruptions that are caught too late. Operations managers are constantly firefighting — reacting after damage is done instead of preventing it.
+
+Our Solution
+
+A 24/7 AI Supply Chain Intelligence Officer built on Salesforce Agentforce that doesn't just tell you what went wrong — it tells you what's about to go wrong, who to switch to, writes the supplier email, and simulates the full impact before you make a decision.
+
+One Line Pitch
+
+"From disruption detected to alternative sourced to email sent — in under 60 seconds."
+
+
+The 7 Features We're Building
+
+🔴 Feature 1 — Risk Monitor
+What: Agent scans all active deliveries and surfaces a prioritized risk summary. Also flags "Silent Suppliers" — suppliers who haven't sent updates in 48+ hours, because silence is the first sign of trouble.
+Combine this with feature 5.
+Demo: "Are there any risks I should know about this week?"
+Salesforce Tools: Subagent + Autolaunched Flow + Instructions
+🔴 Feature 2 — Alternative Supplier Recommender
+What: When a supplier is disrupted, agent instantly finds the best replacement ranked by stability, cost, material quality, credit score and location(in case of calamity farther supplier has higher score)— with reasoning, not just a list.
+Demo: "Battery supply is interupted, suggest me another supplier"
+Salesforce Tools: Subagent + Flow + Agent Reasoning
+🔴 Feature 3 — Supplier Email Drafter
+What: Manager says draft an email — agent generates a professional, context-aware, ready-to-send email in seconds. Different tone for different situations — polite follow-up vs critical disruption escalation.
+Demo: "Draft an email to tyre supplier requesting to update status of delivery"
+Salesforce Tools: Prompt Builder + Flow + Subagent
+🟡 Feature 4 — Monopoly Risk Detector
+What: Agent identifies raw materials where you only have ONE active supplier and flags them as critical concentration risks before a disruption even happens.
+Demo: "Do I have any single supplier risks?"
+Salesforce Tools: Subagent + Flow with count logic + Instructions
+🟡 Feature 5 — Live Disruption Signals
+What: Agent searches live news for floods, strikes, port closures, and political unrest in supplier regions — cross-references with your active suppliers to surface risks you wouldn't know about from internal data alone. Also agent will listen to manager email, if supplier mail to manager that I will delay by 3 days, agent will read the mail, analyse the impact and proctively notify the manager about the consequences.
+Demo: "Any external risks affecting my suppliers this week?"
+Salesforce Tools: Native Web Search in Agentforce + Instructions
+🟡 Feature 6 — Supplier Health Snapshot
+What: Full profile of any supplier on demand — rating, financial health, capacity, on-time delivery history, and current active deliveries — all in one response with red flags highlighted.
+Demo: "Give me a full health check on ElectronicsStore"
+Salesforce Tools: Subagent + Flow querying Supplier + Delivery objects
+🤯 Feature 7 — Cascading Disruption Simulator (THE WOW MOMENT)
+What: Manager asks what happens if a supplier fails completely — agent runs a full simulation showing coverage gaps, financial impact, which alternatives can absorb how much, and recommends exactly what to do TODAY to prevent a production stoppage. No other team will have this. it will show by percentage production falls, revenue impact, extra cost from alternate supplier, business impact, etc.
+Demo: "What happens if Battery Supplies fails tomorrow?"
+
+Feature 8 - Custom dashboard
+manager will login to custom dashboard, he will be able to see all supplier, supplies, there will be chatbot also. Chatbot can display graphs, charts and heatmap to improve user experience. so we need to create api in agentforce and create frontend in next js. The dashboard may also include potential losses caused due to current situation.
+
+Salesforce Tools: Prompt Builder (Flex Template) + Flow + Agent Reasoning
+whom we are building for ?
+so we are building this for operational manager of EV company, which has supplier like semiconductors, batteries, etc. So take this example and design the agent accordingly. 
+

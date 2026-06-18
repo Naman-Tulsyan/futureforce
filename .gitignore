@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# demo browser profile (Slack/Salesforce logins persist here)
+/demo/.profile

@@ -1,0 +1,37 @@
+The Scenario: The Mumbai Port Customs Strike
+Phase 1: The Trigger & Alert (0:00 - 1:00)
+Automation Action: The browser opens to a mock News Website. The script highlights a breaking headline: "Mumbai Port Customs Workers Go On Indefinite Strike."
+
+Automation Action: Tab switches to Slack.
+
+The Action: The agent (listening to the news and cross-referencing your delivery data) proactively drops a DM.
+
+Agent Output: "Alert: Breaking news indicates a customs strike at the Mumbai Port. I am flagging this as Critical. SiliconEdge Corp's semiconductor shipment (DEL-006) is already 7 days overdue at this exact location. Would you like me to assess their current health?"
+
+User (Automated) Prompt 1: "Pull a health snapshot on SiliconEdge Corp. Please include their new Total Score and their registered contact email."
+
+Phase 2: Risk Assessment (1:00 - 2:30)
+Agent Output: The agent responds with a summary, noting SiliconEdge's status is "At Risk" and displaying their Total Score and Email.
+
+User Prompt 2: "Are there any monopoly risks tied to SiliconEdge Corp for our semiconductor supply?"
+
+Agent Output: The agent reveals that SiliconEdge provides a massive portion of your baseline semiconductor volume, creating a critical bottleneck.
+
+Phase 3: Impact Simulation (2:30 - 3:45)
+Automation Action: Switch tab to your Agentforce Preview Console (the dashboard from your image).
+
+User Prompt 3: "Take this customs hold into account and run a simulation. If SiliconEdge Corp faces a full 4-week delay, what is the projected production drop and revenue impact for this quarter?"
+
+Agent Output: The agent generates a simulation similar to your existing data, calculating a severe monthly unit drop and multi-million INR revenue hit, warning that the assembly line may halt shortly.
+
+Phase 4: Resolution & Alternatives (3:45 - 5:00)
+User Prompt 4: "That revenue impact is too high. Find alternative semiconductor suppliers who do not route through India. Rank them by their Quality Score and Total Score."
+
+Agent Output: The agent lists NanoChip Semiconductors (Taiwan) and ChipMaster Global (Taipei) as active, high-quality alternatives.
+
+Phase 5: Execution & Dashboard Review (5:00 - 6:00)
+User Prompt 5: "Let's pivot to NanoChip Semiconductors. Draft an urgent email to our internal procurement team summarizing the Mumbai port strike, the simulated revenue loss, and our recommendation to initiate onboarding with NanoChip immediately."
+
+Agent Output: The agent drafts a highly professional email ready for deployment.
+
+Automation Action: The script "sends" the email, then switches to your Operations Dashboard showing the risk metric stabilizing as the alternative supply chain is activ

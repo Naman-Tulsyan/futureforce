@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from "react";
 
+// Ordered to follow the Mumbai Port strike demo script (Phases 2-5). Click 1→5.
 const QUICK_ACTIONS = [
-  { label: "Weekly risks", prompt: "Are there any risks I should know about this week?" },
-  { label: "Single-supplier risks", prompt: "Do I have any single supplier risks?" },
-  { label: "External signals", prompt: "Any external risks affecting my suppliers this week?" },
-  { label: "Simulate failure", prompt: "What happens if Battery Supplies fails tomorrow?" },
+  { label: "1 · Health snapshot", prompt: "Yes, pull a health snapshot on SiliconEdge Corp. Please include their new Total Score and their registered contact email." },
+  { label: "2 · Monopoly risk", prompt: "Are there any monopoly risks tied to SiliconEdge Corp for our semiconductor supply?" },
+  { label: "3 · Simulate delay", prompt: "Take this customs hold into account and run a simulation. If SiliconEdge Corp faces a full 4-week delay, what is the projected production drop and revenue impact for this quarter?" },
+  { label: "4 · Alternatives", prompt: "That revenue impact is too high. Find alternative semiconductor suppliers who do not route through India. Rank them by their Quality Score and Total Score." },
+  { label: "5 · Draft email", prompt: "Let's pivot to NanoChip Semiconductors. Draft an urgent email to our internal procurement team summarizing the Mumbai port strike, the simulated revenue loss, and our recommendation to initiate onboarding with NanoChip immediately." },
 ];
 
 /**
