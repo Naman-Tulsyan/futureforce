@@ -1,6 +1,5 @@
-import AgentChat from "@/components/AgentChat";
-import Image from "next/image";
+import Dashboard from "@/components/Dashboard";
 
 export default function Home() {
-  return <AgentChat />;
+  return <Dashboard />;
 }
